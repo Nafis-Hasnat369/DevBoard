@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-[#F4F7FF] h-screen">
+<body class="bg-[#F4F7FF]">
     <header class="container mx-auto">
         <div class="navbar bg-base-100 shadow-sm rounded-2xl">
             <div class="navbar-start">
@@ -25,8 +25,89 @@
             </div>
         </div>
     </header>
-    <main>
-        
+    <main class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center">Blog</h2>
+        <div>
+            <pre>
+            Question-1: What are the different ways to select an element in the DOM?
+                Here are some of the different ways to select an element in the DOM:
+                1.Find an element by id - getElementById("id")
+                2.Find an element by class name - getElementsByClassName("class") – Returns an HTML Collection (which is unfiltered) of matching elementbased on their class name
+                3.Find an element by tag name - getElementsByTagName("tag") – Returns an HTML Collection of elements by tag name.
+                4.Using - querySelector("selector") – Selects the first element matching the past CSS selector.
+                5.By using - querySelectorAll("selector") – Selects all matching elements in the CSS selector which returns a NodeList.
+        </pre>
+        </div>
+        <div>
+            <pre>
+            Question-2: What is the difference between innerHTML, innerText, and textContent?
+                1.innerHTML 
+                    Gets or sets the html inside of an element.
+                    Allows raw HTML to be inserted and if not handled properly can leads to security risks
+                2.innerText 
+                    Gets or sets the visible text of an element.
+                    They aim to ignore hidden elements and exclude unnecessary spacing.
+                3.textContent 
+                    Returns or sets the text content of an element, including the text content of all its descendants.
+                    More efficient, performance-wise than innerText.
+            </pre>
+        </div>
+        <div>
+            <pre>
+            Question-3: What is event delegation in the DOM?
+                Event delegation means that you use a parent element to listen for events on its child elements. Instead of adding event listeners directly to each child,
+                 we set a single event listener on the parent, which listens for events bubbling up from children.
+                Example:
+                document.getElementById("parent").addEventListener("click", function(event) {
+                    if (event.target.tagName === "a") 
+                        alert("You clicked on " + event.target.textContent);
+                });
+                Benefits of Event Delegation:
+                •	It’s efficient when working with many elements in DOM.
+                •	Also useful in case of dynamically added elements in the DOM.
+
+            </pre>
+        </div>
+        <div>
+            <pre>
+            Question-4: What is event bubbling in the DOM?
+                Event bubbling is when an event occurs on a child element and bubbles up through its ancestors.
+                Example:
+                    &lt div id="parent"&gt
+                        <button id="child">Click Me</button>
+                    &lt/div&gt
+                    &lt script>
+                        document.getElementById("parent").addEventListener("click", function () {
+                            alert("Parent element is clicked");
+                        });
+
+                        document.getElementById("child").addEventListener("click", function () {
+                            alert("Child element is clicked");
+                        });
+                    &lt/script&gt
+                By clicking the button, it runs child event first and it runs parent event (bubbles up).  In addition, it can be stopped by using event. stopPropagation().
+            </pre>
+        </div>
+        <div>
+            <pre>
+            Question-5: How do you create, add, and remove elements using JavaScript?
+                Creating an Element
+                let newElement = document.createElement("div");
+                newElement.textContent = "New div!";
+                Adding an Element to the DOM
+
+                •	Append as a child: document.body.appendChild(newElement);
+                •	Insert before a specific element: 
+                
+                let parent = document.getElementById("container");
+                let x = document.getElementById("oldElement");
+                parent.insertBefore(newElement, x);
+                Removing an Element
+                newElement.remove();
+                OR
+                document.getElementById("container").removeChild(newElement);
+            </pre>
+        </div>
     </main>
     <script src="./js/script.js"></script>
 </body>
