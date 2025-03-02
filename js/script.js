@@ -32,6 +32,8 @@ function reduceTask() {
     const taskAssigned = document.getElementById('taskAssigned');
     const taskAssignedValue = parseInt(taskAssigned.innerHTML);
     taskAssigned.innerHTML = `0${taskAssignedValue - 1}`;
+    if (taskAssignedValue - 1 === 0)
+        alert("Congratulation!!! You have completed all the current task.")
 }
 function increasePoints() {
     const points = document.getElementById('points');
@@ -40,6 +42,7 @@ function increasePoints() {
 }
 
 function completedTaskBtn(id) {
+    alert("Board updated Successfully");
     title = document.getElementById(`${id}-title`).innerHTML;
     const button = document.getElementById(id);
     button.disabled = true;
