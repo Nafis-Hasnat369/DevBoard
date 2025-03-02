@@ -22,12 +22,14 @@ function formatDate(date) {
     const day = date.getDate();
     const month = months[date.getMonth()];
     const year = date.getFullYear();
-
-    return `${dayName}, <br> <span class="text-xl font-bold">${month} ${day} ${year}</span>`;
+    return `
+        <h4>${dayName},</h4>
+        <h2 class="text-2xl font-bold">${month} ${day} ${year}</h2>
+    `
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const date = document.getElementById("date");
+    const date = document.getElementById("currentDate");
     const currentDate = new Date();
     date.innerHTML = formatDate(currentDate);
 });
