@@ -1,17 +1,11 @@
-// document.addEventListener("click", function () {
-//     // Function to generate a random color
-//     function getRandomColor() {
-//         const letters = '0123456789ABCDEF';
-//         let color = '#';
-//         for (let i = 0; i < 6; i++) {
-//             color += letters[Math.floor(Math.random() * 16)];
-//         }
-//         return color;
-//     }
-//     const container = document.getElementById("container");
-//     const themeBtn = document.getElementById("themeBtn");
-//     container.style.backgroundColor = getRandomColor();
-// });
+// Random color generator
+function randomColor() {
+    const letters = '0123456789ABCDEF';
+    let hex = '#';
+    for (let i = 0; i < 6; i++)
+        hex += letters[Math.floor(Math.random() * 16)];
+    return hex;
+}
 
 // Function to format the date dynamically
 function formatDate(date) {
@@ -27,7 +21,7 @@ function formatDate(date) {
         <h2 class="text-2xl font-bold">${month} ${day} ${year}</h2>
     `
 }
-
+// Current time
 document.addEventListener("DOMContentLoaded", function () {
     const date = document.getElementById("currentDate");
     const currentDate = new Date();
@@ -38,6 +32,11 @@ function reduceTask() {
     const taskAssigned = document.getElementById('taskAssigned');
     const taskAssignedValue = parseInt(taskAssigned.innerHTML);
     taskAssigned.innerHTML = `0${taskAssignedValue - 1}`;
+}
+function increasePoints() {
+    const points = document.getElementById('points');
+    const pointsValue = parseInt(points.innerHTML);
+    points.innerHTML = `${pointsValue + 1}`;
 }
 
 function completedTaskBtn(id) {
@@ -55,26 +54,32 @@ function completedTaskBtn(id) {
     `;
     parent.appendChild(newElement);
     reduceTask();
-}
+    increasePoints();
+};
+
+document.getElementById('btn-theme').addEventListener('click', function () {
+    document.getElementById('body').style.background = randomColor();
+});
 
 document.getElementById('btn-1').addEventListener('click', function (event) {
     completedTaskBtn(event.target.id);
-})
+});
 document.getElementById('btn-2').addEventListener('click', function (event) {
     completedTaskBtn(event.target.id);
-})
+});
 document.getElementById('btn-3').addEventListener('click', function (event) {
     completedTaskBtn(event.target.id);
-})
+});
 document.getElementById('btn-4').addEventListener('click', function (event) {
     completedTaskBtn(event.target.id);
-})
+});
 document.getElementById('btn-5').addEventListener('click', function (event) {
     completedTaskBtn(event.target.id);
-})
+});
 document.getElementById('btn-6').addEventListener('click', function (event) {
     completedTaskBtn(event.target.id);
-})
-document.getElementById('btn-theme').addEventListener('click', function (event) {
+});
 
-})
+document.getElementById('btn-clear').addEventListener('click', function () {
+    document.getElementById('history').innerHTML = ' ';
+});
